@@ -99,3 +99,9 @@ Open your browser at `http://localhost:4200/`.
 npm run build
 ```
 Built files are generated in `dist/portfolio-2yoe/browser/` (production bundle is ~67 kB transfer size).
+
+### GitHub Pages Build
+```powershell
+npm run build:gh
+```
+Generates production build with base href `/Prathamesh_Portfolio2/` ready for GitHub Pages hosting.
