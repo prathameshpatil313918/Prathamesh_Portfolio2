@@ -1,0 +1,221 @@
+<section id="projects" class="section projects-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">
+        <i class="fa-solid fa-diagram-project"></i>
+        <span>Featured Engineering</span>
+      </div>
+      <h2 class="section-title">
+        Enterprise & <span class="text-gradient">Featured Projects</span>
+      </h2>
+      <p class="section-subtitle">
+        Production-ready web applications, backend APIs, and systems engineered with the modern .NET ecosystem.
+      </p>
+    </div>
+
+    <!-- 1. Prominently Highlighted Project: Online Parking Management System (SmartPark) -->
+    @if (featuredProject; as project) {
+      <div class="featured-project-container glass-card">
+        <!-- Top Banner -->
+        <div class="featured-header-banner">
+          <div class="banner-badge-group">
+            <span class="flagship-badge">
+              <i class="fa-solid fa-star"></i> Flagship Featured Project
+            </span>
+            <span class="framework-chip">.NET 8 / C# 12</span>
+          </div>
+          <span class="project-year-pill">
+            <i class="fa-regular fa-calendar"></i> {{ project.year }}
+          </span>
+        </div>
+
+        <!-- Project Title & Subtitle -->
+        <div class="project-headline-area">
+          <h3 class="flagship-title">{{ project.title }}</h3>
+          <p class="flagship-subtitle">{{ project.subtitle }}</p>
+          <p class="flagship-desc">{{ project.description }}</p>
+        </div>
+
+        <!-- Mockup Browser Preview with Image Tabs -->
+        @if (project.image || project.architectureImage) {
+          <div class="browser-mockup-frame">
+            <div class="browser-mockup-header">
+              <div class="browser-window-controls">
+                <span class="win-dot red"></span>
+                <span class="win-dot yellow"></span>
+                <span class="win-dot green"></span>
+              </div>
+
+              <div class="browser-url-pill">
+                <i class="fa-solid fa-lock text-emerald"></i>
+                <span class="url-text">https://smartpark.local/parking-reservation</span>
+              </div>
+
+              <!-- Media Tabs -->
+              <div class="mockup-tabs">
+                <button
+                  type="button"
+                  class="mockup-tab-btn"
+                  [class.active]="selectedImageTab() === 'showcase'"
+                  (click)="setImageTab('showcase')"
+                >
+                  <i class="fa-solid fa-display"></i>
+                  <span>Live App Showcase</span>
+                </button>
+                <button
+                  type="button"
+                  class="mockup-tab-btn"
+                  [class.active]="selectedImageTab() === 'architecture'"
+                  (click)="setImageTab('architecture')"
+                >
+                  <i class="fa-solid fa-network-wired"></i>
+                  <span>System Architecture</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="browser-mockup-body">
+              @if (selectedImageTab() === 'showcase' && project.image) {
+                <div class="preview-media-box">
+                  <img
+                    [src]="project.image"
+                    alt="Online Parking Management System Showcase"
+                    class="project-image-view"
+                    loading="lazy"
+                  />
+                  <div class="media-overlay-caption">
+                    <span>ASP.NET Core 8 MVC • Interactive Bay Grid • Live Booking Interface</span>
+                  </div>
+                </div>
+              }
+
+              @if (selectedImageTab() === 'architecture' && project.architectureImage) {
+                <div class="preview-media-box">
+                  <img
+                    [src]="project.architectureImage"
+                    alt="SmartPark System Architecture Diagram"
+                    class="project-image-view"
+                    loading="lazy"
+                  />
+                  <div class="media-overlay-caption">
+                    <span>3-Tier RBAC Architecture • Entity Framework Core 8 • SQL Server Data Layer</span>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- Details & Metrics Grid -->
+        <div class="project-content-grid">
+          <div class="key-features-column">
+            <h4 class="column-subtitle">
+              <i class="fa-solid fa-list-check text-cyan"></i>
+              <span>Core Features & Implementation</span>
+            </h4>
+            <ul class="features-list">
+              @for (point of project.responsibilities; track point) {
+                <li class="feature-item">
+                  <span class="check-circle"><i class="fa-solid fa-check"></i></span>
+                  <span class="feature-text">{{ point }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+
+          <div class="project-metrics-column">
+            <h4 class="column-subtitle">
+              <i class="fa-solid fa-chart-pie text-cyan"></i>
+              <span>Architectural Scope</span>
+            </h4>
+
+            <div class="metrics-stack">
+              @for (metric of project.metrics; track metric.label) {
+                <div class="metric-glass-card">
+                  <span class="metric-header">{{ metric.label }}</span>
+                  <strong class="metric-data">{{ metric.value }}</strong>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech Stack Tags -->
+        <div class="project-tags-footer">
+          <span class="tags-label">Technologies Used:</span>
+          <div class="tags-cloud">
+            @for (tech of project.technologies; track tech) {
+              <span class="project-pill-badge">
+                <i class="fa-solid fa-code"></i> {{ tech }}
+              </span>
+            }
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- 2. Additional Enterprise Project: ISG Tango -->
+    @for (project of otherProjects; track project.id) {
+      <div class="standard-project-card glass-card">
+        <div class="standard-top-bar">
+          <div class="standard-badge-group">
+            <span class="enterprise-badge">
+              <i class="fa-solid fa-briefcase"></i> Enterprise Solution
+            </span>
+            <span class="role-chip">Role: {{ project.role }}</span>
+          </div>
+          <span class="period-text">{{ project.year }}</span>
+        </div>
+
+        <div class="standard-title-box">
+          <h3 class="standard-title">{{ project.title }}</h3>
+          <p class="standard-subtitle">{{ project.subtitle }}</p>
+          <p class="standard-desc">{{ project.description }}</p>
+        </div>
+
+        <div class="standard-details-grid">
+          <div class="standard-responsibilities">
+            <h4 class="column-subtitle">
+              <i class="fa-solid fa-gear text-cyan"></i>
+              <span>Key Responsibilities & Deliverables</span>
+            </h4>
+            <ul class="features-list">
+              @for (resp of project.responsibilities; track resp) {
+                <li class="feature-item">
+                  <span class="check-circle"><i class="fa-solid fa-check"></i></span>
+                  <span class="feature-text">{{ resp }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+
+          <div class="standard-metrics-box">
+            <h4 class="column-subtitle">
+              <i class="fa-solid fa-sliders text-cyan"></i>
+              <span>Engineering Highlights</span>
+            </h4>
+            <div class="metrics-stack">
+              @for (m of project.metrics; track m.label) {
+                <div class="metric-glass-card">
+                  <span class="metric-header">{{ m.label }}</span>
+                  <strong class="metric-data">{{ m.value }}</strong>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="project-tags-footer">
+          <span class="tags-label">Technologies Used:</span>
+          <div class="tags-cloud">
+            @for (tech of project.technologies; track tech) {
+              <span class="project-pill-badge">
+                <i class="fa-solid fa-code"></i> {{ tech }}
+              </span>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>

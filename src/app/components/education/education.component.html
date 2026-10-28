@@ -1,0 +1,56 @@
+<section id="education" class="section education-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>Academic Foundations</span>
+      </div>
+      <h2 class="section-title">
+        Education & <span class="text-gradient">Training</span>
+      </h2>
+      <p class="section-subtitle">
+        Engineering qualifications and specialized software development credentials.
+      </p>
+    </div>
+
+    <div class="education-cards-grid">
+      @for (edu of portfolio.education; track edu.institution) {
+        <div class="education-card glass-card">
+          <div class="edu-top-row">
+            <div class="edu-icon-badge">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <div class="edu-badge-right">
+              @if (edu.score) {
+                <span class="score-badge">{{ edu.score }}</span>
+              }
+              <span class="duration-badge">
+                <i class="fa-regular fa-calendar-days"></i> {{ edu.duration }}
+              </span>
+            </div>
+          </div>
+
+          <div class="edu-title-box">
+            <h3 class="edu-degree">{{ edu.degree }}</h3>
+            <h4 class="edu-institution">{{ edu.institution }}</h4>
+            <span class="edu-location">
+              <i class="fa-solid fa-location-dot"></i> {{ edu.location }}
+            </span>
+          </div>
+
+          <div class="edu-focus-area">
+            <h5 class="focus-heading">Core Focus Areas:</h5>
+            <div class="focus-pill-list">
+              @for (item of edu.focus; track item) {
+                <div class="focus-pill-item">
+                  <i class="fa-solid fa-check text-cyan"></i>
+                  <span>{{ item }}</span>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

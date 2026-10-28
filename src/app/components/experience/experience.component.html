@@ -1,0 +1,68 @@
+<section id="experience" class="section experience-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Career Journey</span>
+      </div>
+      <h2 class="section-title">
+        Work <span class="text-gradient">Experience</span>
+      </h2>
+      <p class="section-subtitle">
+        Documented professional track record in backend application development and quality assurance procedures.
+      </p>
+    </div>
+
+    <div class="timeline-wrapper">
+      <div class="timeline-track"></div>
+
+      @for (exp of portfolio.experience; track exp.company; let i = $index) {
+        <div class="timeline-row" [class.highlight-row]="i === 0">
+          <!-- Timeline Node Marker -->
+          <div class="timeline-node">
+            <div class="node-circle">
+              <i class="fa-solid" [class.fa-server]="i === 0" [class.fa-clipboard-check]="i === 1"></i>
+            </div>
+          </div>
+
+          <!-- Timeline Card -->
+          <div class="timeline-content-card glass-card">
+            <div class="card-header-row">
+              <div class="role-company-group">
+                <span class="company-name">{{ exp.company }}</span>
+                <h3 class="role-designation">{{ exp.role }}</h3>
+                <span class="location-badge">
+                  <i class="fa-solid fa-location-dot"></i> {{ exp.location }}
+                </span>
+              </div>
+
+              <div class="period-pill">
+                <i class="fa-regular fa-calendar-check"></i>
+                <span>{{ exp.period }}</span>
+              </div>
+            </div>
+
+            <!-- Bullet Points from Resume -->
+            <ul class="duties-list">
+              @for (point of exp.points; track point) {
+                <li class="duty-item">
+                  <span class="duty-marker">
+                    <i class="fa-solid fa-check"></i>
+                  </span>
+                  <span class="duty-text">{{ point }}</span>
+                </li>
+              }
+            </ul>
+
+            <!-- Tech Tags -->
+            <div class="experience-tags-row">
+              @for (tech of exp.technologies; track tech) {
+                <span class="exp-tech-tag">{{ tech }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

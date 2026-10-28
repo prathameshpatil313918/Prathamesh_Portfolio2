@@ -1,0 +1,172 @@
+<section id="contact" class="section contact-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">
+        <i class="fa-solid fa-paper-plane"></i>
+        <span>Get In Touch</span>
+      </div>
+      <h2 class="section-title">
+        Contact <span class="text-gradient">Me</span>
+      </h2>
+      <p class="section-subtitle">
+        Interested in discussing a .NET Developer role, backend engineering challenges, or collaborative projects?
+      </p>
+    </div>
+
+    <div class="contact-grid-layout">
+      <!-- Direct Contact Info Column -->
+      <div class="contact-details-column">
+        <h3 class="contact-subheading">Direct Communication Channels</h3>
+        <p class="contact-intro">
+          I am actively seeking full-time .NET Developer roles. Reach out via email, phone, or send a quick note through the form.
+        </p>
+
+        <div class="contact-channel-cards">
+          <!-- Email Card -->
+          <div class="channel-card glass-card">
+            <div class="channel-icon-box">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="channel-text-area">
+              <span class="channel-type">Email Address</span>
+              <a [href]="'mailto:' + portfolio.personal.email" class="channel-link">
+                {{ portfolio.personal.email }}
+              </a>
+            </div>
+            <button
+              type="button"
+              class="action-copy-btn"
+              (click)="copyToClipboard(portfolio.personal.email, 'email')"
+              [title]="copiedItem() === 'email' ? 'Copied!' : 'Copy Email'"
+            >
+              <i class="fa-solid" [class.fa-check]="copiedItem() === 'email'" [class.fa-copy]="copiedItem() !== 'email'"></i>
+            </button>
+          </div>
+
+          <!-- Phone Card -->
+          <div class="channel-card glass-card">
+            <div class="channel-icon-box">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <div class="channel-text-area">
+              <span class="channel-type">Phone Number</span>
+              <a [href]="'tel:' + portfolio.personal.phone" class="channel-link">
+                {{ portfolio.personal.phone }}
+              </a>
+            </div>
+            <button
+              type="button"
+              class="action-copy-btn"
+              (click)="copyToClipboard(portfolio.personal.phone, 'phone')"
+              [title]="copiedItem() === 'phone' ? 'Copied!' : 'Copy Phone'"
+            >
+              <i class="fa-solid" [class.fa-check]="copiedItem() === 'phone'" [class.fa-copy]="copiedItem() !== 'phone'"></i>
+            </button>
+          </div>
+
+          <!-- Resume PDF Card -->
+          <div class="channel-card flagship-channel glass-card">
+            <div class="channel-icon-box accent-box">
+              <i class="fa-solid fa-file-pdf"></i>
+            </div>
+            <div class="channel-text-area">
+              <span class="channel-type">Verified Resume PDF</span>
+              <span class="channel-filename">{{ portfolio.personal.resumeFileName }}</span>
+            </div>
+            <a
+              [href]="portfolio.personal.resumeUrl"
+              [download]="portfolio.personal.resumeFileName"
+              class="btn btn-primary btn-sm"
+              title="Download PDF Resume"
+            >
+              <i class="fa-solid fa-download"></i>
+              <span>Download</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Message Form Column -->
+      <div class="contact-form-column">
+        <div class="form-container-card glass-card">
+          <h3 class="form-title">Send a Direct Message</h3>
+          <p class="form-desc">
+            Submit the form below to initiate an email to my inbox.
+          </p>
+
+          @if (formSubmitted()) {
+            <div class="feedback-banner success-banner">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Thank you! Launching your email client with your message...</span>
+            </div>
+          }
+
+          @if (formError()) {
+            <div class="feedback-banner error-banner">
+              <i class="fa-solid fa-circle-exclamation"></i>
+              <span>{{ formError() }}</span>
+            </div>
+          }
+
+          <form (ngSubmit)="onSubmit()" class="message-form">
+            <div class="form-field-group">
+              <label for="name" class="field-label">Your Name *</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                [(ngModel)]="formData.name"
+                class="field-input"
+                placeholder="e.g. Hiring Manager / Technical Recruiter"
+                required
+              />
+            </div>
+
+            <div class="form-field-group">
+              <label for="email" class="field-label">Your Email *</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                [(ngModel)]="formData.email"
+                class="field-input"
+                placeholder="name@company.com"
+                required
+              />
+            </div>
+
+            <div class="form-field-group">
+              <label for="subject" class="field-label">Subject</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                [(ngModel)]="formData.subject"
+                class="field-input"
+                placeholder=".NET Developer Role Inquiry"
+              />
+            </div>
+
+            <div class="form-field-group">
+              <label for="message" class="field-label">Message *</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                [(ngModel)]="formData.message"
+                class="field-input field-textarea"
+                placeholder="Hi Prathamesh, I reviewed your .NET portfolio and would like to discuss..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+              <i class="fa-regular fa-paper-plane"></i>
+              <span>Send Message</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

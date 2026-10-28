@@ -1,0 +1,105 @@
+<section id="about" class="section about-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">
+        <i class="fa-solid fa-user-tie"></i>
+        <span>Professional Profile</span>
+      </div>
+      <h2 class="section-title">
+        About <span class="text-gradient">Me</span>
+      </h2>
+      <p class="section-subtitle">
+        Dedicated .NET Developer with 1.5 years of experience delivering robust backend services and data solutions.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <!-- Clean Profile Card with relevant details from resume -->
+      <div class="profile-summary-card glass-card">
+        <div class="profile-card-top">
+          <div class="profile-avatar-mini">
+            <span class="avatar-initials">PP</span>
+          </div>
+          <div class="profile-titles">
+            <h3 class="profile-name">{{ portfolio.personal.name }}</h3>
+            <span class="profile-role-badge">.NET Developer</span>
+          </div>
+        </div>
+
+        <div class="profile-details-list">
+          <div class="detail-row">
+            <span class="detail-label"><i class="fa-solid fa-envelope text-cyan"></i> Email:</span>
+            <a [href]="'mailto:' + portfolio.personal.email" class="detail-value link-text">
+              {{ portfolio.personal.email }}
+            </a>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label"><i class="fa-solid fa-phone text-cyan"></i> Phone:</span>
+            <a [href]="'tel:' + portfolio.personal.phone" class="detail-value link-text">
+              {{ portfolio.personal.phone }}
+            </a>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label"><i class="fa-solid fa-location-dot text-cyan"></i> Location:</span>
+            <span class="detail-value">Amravati & Hyderabad, India</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label"><i class="fa-solid fa-graduation-cap text-cyan"></i> Degree:</span>
+            <span class="detail-value">B.E. (CSE) — 71.10%</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label"><i class="fa-solid fa-briefcase text-cyan"></i> Experience:</span>
+            <span class="detail-value">1.5 Years Backend Development</span>
+          </div>
+        </div>
+
+        <div class="profile-card-action">
+          <a
+            [href]="portfolio.personal.resumeUrl"
+            [download]="portfolio.personal.resumeFileName"
+            class="btn btn-outline btn-sm w-100"
+          >
+            <i class="fa-solid fa-file-arrow-down"></i>
+            <span>Download Official Resume</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Narrative & Strengths Column -->
+      <div class="about-narrative-column">
+        <div class="narrative-box glass-card">
+          <h3 class="narrative-title">
+            Engineering scalable web APIs and reliable relational database architectures.
+          </h3>
+
+          <p class="narrative-paragraph">
+            I am a <strong>.NET Developer with 1.5 years of experience</strong> in backend application development using <strong>C#, ASP.NET Web API, SQL Server, and ADO.NET</strong>. My core expertise is focused on architecting, developing, and maintaining high-performance REST APIs tailored to business logic requirements.
+          </p>
+
+          <p class="narrative-paragraph">
+            Throughout my backend engineering journey, I have actively written and modified <strong>complex SQL queries, stored procedures, joins, and views</strong>, ensuring swift data retrieval and transactional consistency. A key achievement includes implementing <strong>email logging functionality</strong> that securely records recipient details, project information, and email dispatch status in SQL Server.
+          </p>
+
+          <p class="narrative-paragraph">
+            I bring strong practical skills in <strong>API testing using Postman</strong>, investigating request payloads, debugging backend defects, and validating database state integrity. Additionally, I am <strong>familiar with Angular</strong> and enjoy collaborating with cross-functional team members to deliver seamless end-to-end features.
+          </p>
+        </div>
+
+        <!-- 4 Key Competencies Grid -->
+        <div class="competencies-grid">
+          @for (item of coreHighlights; track item.title) {
+            <div class="competency-card glass-card">
+              <div class="competency-icon">
+                <i [class]="item.icon"></i>
+              </div>
+              <div class="competency-body">
+                <h4 class="competency-heading">{{ item.title }}</h4>
+                <p class="competency-text">{{ item.desc }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

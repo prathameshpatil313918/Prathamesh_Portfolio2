@@ -1,0 +1,150 @@
+<section id="home" class="hero-section">
+  <!-- Ambient background glow spots -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <div class="container hero-container">
+    <div class="hero-content">
+      <!-- Availability Status Badge -->
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        <span class="status-text">Available for .NET Developer Roles</span>
+      </div>
+
+      <!-- Main Headline with Gradient Text -->
+      <h1 class="hero-title">
+        Hello, I'm <span class="text-gradient">{{ portfolio.personal.name }}</span>
+      </h1>
+
+      <!-- Animated Rotating Role -->
+      <div class="animated-role-wrapper">
+        <span class="role-prefix">Passionate</span>
+        <span class="animated-role text-highlight">
+          {{ displayedRole() }}<span class="typing-cursor">|</span>
+        </span>
+      </div>
+
+      <!-- Introduction based strictly on resume -->
+      <p class="hero-description">
+        {{ portfolio.personal.objective }}
+      </p>
+
+      <!-- Key Focus Tech Tags -->
+      <div class="hero-tech-pills">
+        <span class="tech-pill-item"><i class="fa-solid fa-code"></i> C#</span>
+        <span class="tech-pill-item"><i class="fa-solid fa-layer-group"></i> ASP.NET Core</span>
+        <span class="tech-pill-item"><i class="fa-solid fa-network-wired"></i> Web API</span>
+        <span class="tech-pill-item"><i class="fa-solid fa-database"></i> SQL Server</span>
+        <span class="tech-pill-item"><i class="fa-solid fa-diagram-project"></i> ADO.NET</span>
+        <span class="tech-pill-item"><i class="fa-brands fa-angular"></i> Angular</span>
+      </div>
+
+      <!-- Call to Action Buttons -->
+      <div class="hero-cta-group">
+        <a href="#projects" class="btn btn-primary" (click)="scrollTo('projects', $event)">
+          <i class="fa-solid fa-rocket"></i>
+          <span>View My Projects</span>
+        </a>
+
+        <a
+          [href]="portfolio.personal.resumeUrl"
+          [download]="portfolio.personal.resumeFileName"
+          class="btn btn-secondary"
+          title="Download Prathamesh Patil's Resume PDF"
+        >
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <span>Download Resume</span>
+        </a>
+
+        <a href="#contact" class="btn btn-outline" (click)="scrollTo('contact', $event)">
+          <i class="fa-regular fa-paper-plane"></i>
+          <span>Contact Me</span>
+        </a>
+      </div>
+
+      <!-- Direct Contact Channels (Real info only) -->
+      <div class="hero-contact-strip">
+        <a [href]="'mailto:' + portfolio.personal.email" class="contact-pill-link">
+          <i class="fa-solid fa-envelope"></i>
+          <span>{{ portfolio.personal.email }}</span>
+        </a>
+        <a [href]="'tel:' + portfolio.personal.phone" class="contact-pill-link">
+          <i class="fa-solid fa-phone"></i>
+          <span>{{ portfolio.personal.phone }}</span>
+        </a>
+        <span class="contact-pill-static">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>Maharashtra & Telangana</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Profile Image Area & Developer Frame -->
+    <div class="hero-visual">
+      <div class="profile-card-wrapper">
+        <div class="profile-glow-ring"></div>
+
+        <!-- Main Profile Image Showcase -->
+        <div class="profile-avatar-frame glass-card">
+          <div class="avatar-inner">
+            <div class="avatar-placeholder-art">
+              <div class="developer-monogram">
+                <span class="monogram-initials">PP</span>
+              </div>
+              <div class="avatar-badges-cluster">
+                <span class="cluster-badge badge-csharp">
+                  <i class="fa-solid fa-code"></i> C#
+                </span>
+                <span class="cluster-badge badge-dotnet">
+                  <i class="fa-solid fa-cubes"></i> .NET 8
+                </span>
+                <span class="cluster-badge badge-sql">
+                  <i class="fa-solid fa-database"></i> SQL
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Card Badge inside Avatar Frame -->
+          <div class="profile-footer-badge">
+            <div class="verified-dot"></div>
+            <div class="profile-meta-text">
+              <span class="pm-title">Prathamesh Patil</span>
+              <span class="pm-role">.NET Backend Engineer (1.5 YOE)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Info Pills around Profile -->
+        <div class="floating-pill pill-top-left glass-card">
+          <i class="fa-solid fa-server text-cyan"></i>
+          <div>
+            <strong>ASP.NET Web API</strong>
+            <span>RESTful Microservices</span>
+          </div>
+        </div>
+
+        <div class="floating-pill pill-bottom-right glass-card">
+          <i class="fa-solid fa-database text-purple"></i>
+          <div>
+            <strong>SQL Server</strong>
+            <span>Stored Procs & Joins</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Metrics Row -->
+  <div class="container hero-stats-container">
+    <div class="stats-grid">
+      @for (stat of portfolio.personal.stats; track stat.label) {
+        <div class="stat-card glass-card">
+          <div class="stat-value text-gradient">{{ stat.value }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+          <div class="stat-sub">{{ stat.sub }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

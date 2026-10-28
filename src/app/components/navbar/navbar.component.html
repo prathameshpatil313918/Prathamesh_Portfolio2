@@ -1,0 +1,109 @@
+<header class="navbar-wrapper" [class.navbar-scrolled]="isScrolled()">
+  <div class="container navbar-container">
+    <!-- Brand Monogram -->
+    <a href="#home" class="brand-link" (click)="scrollToSection('home', $event)">
+      <div class="brand-badge">
+        <span class="brand-initials">PP</span>
+        <span class="badge-glow"></span>
+      </div>
+      <div class="brand-info">
+        <span class="brand-name">{{ portfolio.personal.name }}</span>
+        <span class="brand-role">
+          <span class="dot-indicator"></span>
+          <span>.NET Developer</span>
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="nav-desktop">
+      <ul class="nav-list">
+        @for (item of navItems; track item.target) {
+          <li class="nav-item">
+            <a
+              [href]="'#' + item.target"
+              class="nav-link"
+              [class.active]="activeSection() === item.target"
+              (click)="scrollToSection(item.target, $event)"
+            >
+              {{ item.label }}
+              @if (activeSection() === item.target) {
+                <span class="active-indicator"></span>
+              }
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="nav-actions">
+      <a
+        [href]="portfolio.personal.resumeUrl"
+        [download]="portfolio.personal.resumeFileName"
+        class="btn btn-primary btn-sm btn-nav-resume"
+      >
+        <i class="fa-solid fa-file-arrow-down"></i>
+        <span>Resume</span>
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button
+        type="button"
+        class="mobile-toggle"
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="isMobileMenuOpen()"
+        aria-label="Toggle navigation menu"
+      >
+        <i class="fa-solid" [class.fa-bars]="!isMobileMenuOpen()" [class.fa-xmark]="isMobileMenuOpen()"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  @if (isMobileMenuOpen()) {
+    <div class="mobile-drawer-backdrop" (click)="closeMobileMenu()">
+      <div class="mobile-menu-card" (click)="$event.stopPropagation()">
+        <div class="mobile-menu-header">
+          <div class="brand-info">
+            <span class="brand-name">{{ portfolio.personal.name }}</span>
+            <span class="brand-role">.NET Developer</span>
+          </div>
+          <button type="button" class="close-btn" (click)="closeMobileMenu()" aria-label="Close menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <ul class="mobile-nav-list">
+          @for (item of navItems; track item.target) {
+            <li>
+              <a
+                [href]="'#' + item.target"
+                class="mobile-nav-link"
+                [class.active]="activeSection() === item.target"
+                (click)="scrollToSection(item.target, $event)"
+              >
+                <div class="mobile-icon-circle">
+                  <i [class]="item.icon"></i>
+                </div>
+                <span>{{ item.label }}</span>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+              </a>
+            </li>
+          }
+        </ul>
+
+        <div class="mobile-menu-footer">
+          <a
+            [href]="portfolio.personal.resumeUrl"
+            [download]="portfolio.personal.resumeFileName"
+            class="btn btn-primary w-100"
+          >
+            <i class="fa-solid fa-file-arrow-down"></i>
+            <span>Download Resume PDF</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  }
+</header>

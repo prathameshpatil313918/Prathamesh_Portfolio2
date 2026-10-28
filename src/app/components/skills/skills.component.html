@@ -1,0 +1,71 @@
+<section id="skills" class="section skills-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">
+        <i class="fa-solid fa-code"></i>
+        <span>Technical Arsenal</span>
+      </div>
+      <h2 class="section-title">
+        Technical <span class="text-gradient">Skills</span>
+      </h2>
+      <p class="section-subtitle">
+        Enterprise-grade developer skillset categorized by languages, frameworks, data stores, and API design patterns.
+      </p>
+
+      <!-- Category Filter Tabs -->
+      <div class="skills-filter-tabs">
+        @for (filter of filterOptions; track filter.id) {
+          <button
+            type="button"
+            class="filter-tab-btn"
+            [class.active]="selectedFilter() === filter.id"
+            (click)="setFilter(filter.id)"
+          >
+            {{ filter.label }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Categorized Skill Cards Grid -->
+    <div class="skills-grid">
+      @for (category of portfolio.skillsCategories; track category.title) {
+        @if (isCategoryVisible(category)) {
+          <div class="skill-group-card glass-card">
+            <div class="card-top-header">
+              <div class="group-icon-wrapper">
+                <i [class]="category.icon"></i>
+              </div>
+              <div class="group-title-box">
+                <h3 class="group-title">{{ category.title }}</h3>
+                <span class="group-subtitle">{{ category.description }}</span>
+              </div>
+            </div>
+
+            <div class="skill-badges-container">
+              @for (skill of category.skills; track skill) {
+                <div class="skill-tag-pill">
+                  <span class="tag-dot"></span>
+                  <span class="tag-label">{{ skill }}</span>
+                </div>
+              }
+            </div>
+          </div>
+        }
+      }
+    </div>
+
+    <!-- Highlight Callout Banner -->
+    <div class="skills-banner glass-card">
+      <div class="banner-icon-box">
+        <i class="fa-solid fa-microchip"></i>
+      </div>
+      <div class="banner-text">
+        <h4 class="banner-heading">Enterprise Backend Focus & Database Integrity</h4>
+        <p class="banner-sub">
+          Hands-on production background designing ASP.NET Core & Web API services, writing optimized Stored Procedures and complex queries in SQL Server, executing high-throughput ADO.NET and EF Core operations, and conducting thorough API testing with Postman.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

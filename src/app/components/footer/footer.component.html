@@ -1,0 +1,73 @@
+<footer class="footer-wrapper">
+  <div class="container footer-container">
+    <div class="footer-top-grid">
+      <!-- Brand & Summary -->
+      <div class="footer-brand-box">
+        <div class="footer-brand-header">
+          <div class="brand-badge-mini">
+            <span>PP</span>
+          </div>
+          <div>
+            <h3 class="brand-name-text">{{ portfolio.personal.name }}</h3>
+            <span class="brand-role-text">.NET Developer</span>
+          </div>
+        </div>
+        <p class="brand-summary-text">
+          .NET Developer with 1.5 years of experience delivering robust backend applications, RESTful APIs, and relational database solutions.
+        </p>
+        <div class="footer-contact-links">
+          <a [href]="'mailto:' + portfolio.personal.email" class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>{{ portfolio.personal.email }}</span>
+          </a>
+          <a [href]="'tel:' + portfolio.personal.phone" class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>{{ portfolio.personal.phone }}</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Nav Links -->
+      <div class="footer-nav-col">
+        <h4 class="footer-col-title">Navigation</h4>
+        <ul class="footer-link-list">
+          <li><a href="#home" (click)="scrollTo('home', $event)">Home</a></li>
+          <li><a href="#about" (click)="scrollTo('about', $event)">About Me</a></li>
+          <li><a href="#skills" (click)="scrollTo('skills', $event)">Technical Skills</a></li>
+          <li><a href="#experience" (click)="scrollTo('experience', $event)">Work Experience</a></li>
+          <li><a href="#projects" (click)="scrollTo('projects', $event)">Featured Projects</a></li>
+          <li><a href="#education" (click)="scrollTo('education', $event)">Education</a></li>
+          <li><a href="#contact" (click)="scrollTo('contact', $event)">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resume Download CTA -->
+      <div class="footer-cta-col">
+        <h4 class="footer-col-title">Verified Resume</h4>
+        <p class="cta-col-desc">
+          Download the complete official resume detailing professional experience, enterprise projects, and technical skills.
+        </p>
+        <a
+          [href]="portfolio.personal.resumeUrl"
+          [download]="portfolio.personal.resumeFileName"
+          class="btn btn-primary btn-sm w-100"
+        >
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <span>Download Resume PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom-bar">
+      <p class="copyright-note">
+        &copy; {{ currentYear }} {{ portfolio.personal.name }}. All rights reserved. Built with Angular & TypeScript.
+      </p>
+
+      <button type="button" class="back-to-top-btn" (click)="scrollToTop($event)" aria-label="Back to top">
+        <span>Back to Top</span>
+        <i class="fa-solid fa-arrow-up"></i>
+      </button>
+    </div>
+  </div>
+</footer>
