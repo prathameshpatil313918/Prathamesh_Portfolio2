@@ -52,8 +52,8 @@ export const PORTFOLIO_DATA = {
     phone: '+91 9553595362',
     email: 'prathameshpatil313918@gmail.com',
     location: 'Amravati, Maharashtra / Hyderabad, Telangana',
-    resumeUrl: 'assets/Prathamesh_Patil_Resume.pdf',
-    resumeFileName: 'Prathamesh_Patil_Resume.pdf',
+    resumeUrl: 'assets/Prathamesh_Patil_Resume_2026.pdf',
+    resumeFileName: 'Prathamesh_Patil_Resume_2026.pdf',
     headline: 'Backend Application Development with C#, ASP.NET Web API, and SQL Server',
     animatedRoles: [
       '.NET Developer',

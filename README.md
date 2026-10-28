@@ -55,7 +55,7 @@ d:\Angular\2YOE\
 │   ├── assets/
 │   │   ├── parking-showcase.jpg           # Live App Screenshot
 │   │   ├── smartpark-architecture.jpg     # System Architecture Diagram
-│   │   └── Prathamesh_Patil_Resume.pdf    # Verified Resume PDF
+│   │   └── Prathamesh_Patil_Resume_2026.pdf    # Verified Resume PDF
 │   └── favicon.ico
 ├── src/
 │   ├── app/
